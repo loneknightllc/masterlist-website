@@ -1,0 +1,282 @@
+/* ===========================================================
+   Masterlist — landing site
+   Concept: a focus instrument. Dark, quiet, precise.
+   One accent (tomato — the color of the app's own stat charts
+   and of the Pomodoro tomato). Monospace is reserved for
+   measured things: times, counts, labels.
+   =========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #111216;
+  --bg-1: #171920;
+  --bg-2: #1e212a;
+  --line: #292c36;
+  --line-soft: #21242c;
+
+  --text: #f3f0ea;
+  --dim: #9fa1aa;
+  --faint: #63656e;
+
+  --accent: #e8542a;      /* tomato */
+  --accent-hi: #ff6a3d;
+  --accent-soft: rgba(232,84,42,0.10);
+  --icon-blue: #4a6cf7;   /* factual app-icon color, used only in the mark */
+
+  --display: 'Space Grotesk', sans-serif;
+  --body: 'Inter', sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+
+  --w: 780px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.wrap { max-width: var(--w); margin: 0 auto; padding: 0 24px; }
+.mono { font-family: var(--mono); }
+
+/* ---------- header ---------- */
+
+.hd {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(17,18,22,0.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.hd .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  color: var(--text); font-family: var(--display);
+  font-weight: 600; font-size: 16.5px;
+}
+.brand:hover { text-decoration: none; }
+.brand-mark { width: 22px; height: 22px; flex-shrink: 0; }
+
+.nav { display: flex; gap: 22px; }
+.nav a {
+  color: var(--dim); font-size: 13px; font-family: var(--mono);
+}
+.nav a:hover { color: var(--text); text-decoration: none; }
+
+/* ---------- buttons ---------- */
+
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--accent); color: #14161a;
+  font-family: var(--display); font-weight: 600; font-size: 15px;
+  padding: 12px 20px; border-radius: 8px;
+  transition: background .15s ease, transform .15s ease;
+}
+.btn:hover { background: var(--accent-hi); text-decoration: none; transform: translateY(-1px); }
+.btn svg { display: block; }
+
+/* ---------- hero ---------- */
+
+.hero { padding: 92px 0 64px; }
+.hero-grid { display: flex; align-items: center; gap: 52px; }
+.hero-copy { flex: 1 1 340px; }
+
+.eyebrow {
+  font-family: var(--mono); font-size: 12px;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 20px;
+}
+
+h1.title {
+  font-size: clamp(32px, 5.2vw, 47px);
+  margin-bottom: 20px;
+}
+
+.lede {
+  color: var(--dim); font-size: 17.5px; line-height: 1.55;
+  max-width: 44ch; margin: 0 0 26px;
+}
+
+.rating {
+  display: flex; align-items: center; gap: 9px;
+  font-family: var(--mono); font-size: 13px; color: var(--dim);
+  margin-bottom: 26px;
+}
+.rating .stars { color: var(--accent); letter-spacing: 1px; }
+.rating .sep { color: var(--faint); }
+
+.hero-fine { color: var(--faint); font-size: 13px; margin: 14px 0 0; }
+
+/* hero signature: the focus dial */
+.dial-wrap { flex: 0 0 auto; width: 232px; }
+.dial { width: 232px; height: 232px; }
+.dial-track { fill: none; stroke: var(--line); stroke-width: 3; }
+.dial-arc {
+  fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round;
+  transform-origin: 116px 116px; transform: rotate(90deg) scale(-1, 1);
+  stroke-dasharray: 596.9 596.9;
+}
+.dial-tick { stroke: var(--faint); stroke-width: 2; }
+.dial-time { font-family: var(--mono); fill: var(--text); font-size: 31px; font-weight: 500; }
+.dial-task { font-family: var(--mono); fill: var(--dim); font-size: 10.5px; letter-spacing: .04em; }
+
+/* ---------- section shell ---------- */
+
+.sec { padding: 62px 0; border-top: 1px solid var(--line-soft); }
+
+.kicker {
+  font-family: var(--mono); font-size: 12px;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--faint); margin-bottom: 14px;
+}
+.sec > .wrap > h2.sec-title {
+  font-size: 27px; max-width: 20ch; margin-bottom: 8px;
+}
+.sec-sub { color: var(--dim); font-size: 15px; max-width: 52ch; margin: 0 0 40px; }
+
+/* ---------- the two pillars ---------- */
+
+.pillar { display: flex; gap: 44px; align-items: center; }
+.pillar + .pillar { margin-top: 56px; }
+.pillar.flip { flex-direction: row-reverse; }
+
+.pillar-body { flex: 1 1 320px; }
+.pillar-index {
+  font-family: var(--mono); font-size: 12px; color: var(--accent);
+  letter-spacing: .1em; margin-bottom: 12px;
+}
+.pillar h3 { font-size: 23px; margin-bottom: 12px; }
+.pillar p { color: var(--dim); font-size: 15.5px; margin: 0; }
+
+.pillar-art {
+  flex: 0 0 236px; width: 236px;
+  background: var(--bg-1); border: 1px solid var(--line);
+  border-radius: 14px; padding: 20px;
+}
+
+/* mini bar chart art */
+.chart-cap {
+  font-family: var(--mono); font-size: 10px; color: var(--faint);
+  letter-spacing: .06em; text-transform: uppercase; margin-bottom: 14px;
+}
+.bars { display: flex; align-items: flex-end; gap: 7px; height: 92px; }
+.bars span {
+  flex: 1; background: var(--accent); border-radius: 3px 3px 0 0;
+  opacity: .55; transition: opacity .2s ease;
+}
+.pillar-art:hover .bars span { opacity: .9; }
+.chart-foot {
+  display: flex; justify-content: space-between;
+  font-family: var(--mono); font-size: 10px; color: var(--faint);
+  margin-top: 10px;
+}
+
+/* privacy art: device holds data, cloud is struck */
+.priv-art { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+.priv-row {
+  display: flex; align-items: center; gap: 12px; width: 100%;
+  font-family: var(--mono); font-size: 12px;
+}
+.priv-row .lbl { color: var(--dim); }
+.priv-row.on .dot { background: var(--accent); }
+.priv-row.off .lbl { color: var(--faint); text-decoration: line-through; }
+.priv-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--faint); flex-shrink: 0; }
+.priv-row.on .priv-dot { background: var(--accent); }
+.priv-glyph { flex-shrink: 0; }
+
+/* ---------- everything else grid ---------- */
+
+.rest {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2px 40px;
+}
+.rest-item { padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
+.rest-item h4 {
+  font-family: var(--body); font-weight: 600; font-size: 15px;
+  margin: 0 0 3px; color: var(--text);
+}
+.rest-item p { margin: 0; color: var(--dim); font-size: 13.5px; line-height: 1.5; }
+
+/* ---------- download band ---------- */
+
+.cta { padding: 66px 0; border-top: 1px solid var(--line-soft); text-align: center; }
+.cta h2 { font-size: 26px; margin-bottom: 10px; }
+.cta p { color: var(--dim); font-size: 15px; margin: 0 0 26px; }
+
+/* ---------- footer ---------- */
+
+.ft { border-top: 1px solid var(--line-soft); padding: 40px 0 56px; }
+.ft-grid { display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; }
+.ft-about { max-width: 340px; color: var(--dim); font-size: 13.5px; }
+.ft-col { display: flex; flex-direction: column; gap: 8px; }
+.ft-col .lbl {
+  font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+  letter-spacing: .06em; color: var(--faint); margin-bottom: 6px;
+}
+.ft-col a { color: var(--dim); font-size: 14px; }
+.ft-col a:hover { color: var(--text); }
+.ft-bottom {
+  margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line-soft);
+  color: var(--faint); font-size: 12.5px; font-family: var(--mono);
+}
+
+/* ---------- legal pages ---------- */
+
+.legal main { padding: 60px 0 80px; }
+.legal .updated { font-family: var(--mono); color: var(--faint); font-size: 13px; margin-bottom: 8px; }
+.legal h1 { font-size: 30px; margin-bottom: 28px; }
+.legal h2 { font-size: 18px; margin: 34px 0 12px; }
+.legal p, .legal li { color: var(--dim); font-size: 15px; line-height: 1.7; }
+.legal ul { padding-left: 20px; }
+.legal a { text-decoration: underline; }
+.legal code {
+  font-family: var(--mono); font-size: 13px;
+  background: var(--bg-2); padding: 1px 5px; border-radius: 4px; color: var(--text);
+}
+.back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 13px; color: var(--dim); margin-bottom: 30px;
+}
+.back:hover { color: var(--accent); text-decoration: none; }
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 720px) {
+  .nav { display: none; }
+  .hero { padding: 64px 0 48px; }
+  .hero-grid { flex-direction: column-reverse; align-items: flex-start; gap: 36px; }
+  .dial-wrap, .dial { width: 176px; }
+  .dial { height: 176px; }
+  .pillar, .pillar.flip { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .pillar-art { width: 100%; flex-basis: auto; }
+  .rest { grid-template-columns: 1fr; gap: 0; }
+}
